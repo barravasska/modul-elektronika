@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul 3: Arus Listrik</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']]
+          }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+    </head>
+<body>
+
+    <header class="container">
+        <a href="index.html" class="back-button">← Kembali ke Menu</a>
+        <h1>Modul 3: Arus Listrik (I)</h1>
+    </header>
+
+    <main id="app-container" class="container">
+
+        <div class="module" id="modul-arus">
+            
+            <h3>Apa itu Arus Listrik?</h3>
+            <div class="materi-container">
+                <p>Arus Listrik (Current) adalah laju aliran muatan listrik yang melewati suatu titik atau bagian. Dalam konduktor (seperti kawat tembaga), arus listrik ini adalah aliran elektron-elektron.</p>
+                
+                <p>Analogi yang paling mudah adalah <strong>aliran air di dalam pipa</strong>. Arus listrik ($I$) ibarat seberapa banyak volume air yang mengalir melewati satu titik pipa setiap detiknya.</p>
+                <ul>
+                    <li><strong>Tegangan ($V$)</strong> adalah tekanan air yang mendorong aliran.</li>
+                    <li><strong>Hambatan ($R$)</strong> adalah penyempitan pada pipa yang menghambat aliran.</li>
+                </ul>
+                <p>Besarnya arus listrik diukur dalam satuan <strong>Ampere (A)</strong>. Satu Ampere setara dengan satu Coulomb muatan yang mengalir per detik.</p>
+                
+                <p>Seperti yang dipelajari di Modul 1, hubungan ketiganya dijelaskan oleh Hukum Ohm:</p>
+                <div class="rumus-box">
+                    $$ I = \frac{V}{R} $$
+                </div>
+                <p>Ini berarti: Semakin besar Tegangan (dorongan), semakin besar Arusnya. Sebaliknya, semakin besar Hambatan (penyempitan), semakin kecil Arusnya. (Rumus: $I = V/R$)</p>
+            </div>
+
+            <h3 class="simulasi-title">Simulasi Aliran Arus</h3>
+            <p>Sekarang, mari kita visualisasikan rumus $I = V / R$. Coba naikkan Tegangan (V) atau turunkan Hambatan (R), dan perhatikan "kecepatan aliran" di dalam pipa.</p>
+            
+            <div class="interactive-tool">
+                
+                <div class="current-controls">
+                    <label for="v-slider">Tegangan (V): <span id="v-value-display">50</span> V</label>
+                    <input type="range" id="v-slider" class="slider" min="0" max="100" value="50">
+                    
+                    <label for="r-slider">Hambatan (R): <span id="r-value-display">500</span> Ω</label>
+                    <input type="range" id="r-slider" class="slider" min="10" max="1000" value="500">
+                </div>
+
+                <h4>Hasil Arus (I): <span id="i-result-display">...</span> Ampere</h4>
+
+                <div class="wire-visualization-container">
+                    <div class="wire-visualization" id="wire-viz">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    
+    <script src="script/script-modul-3.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Hukum Ohm</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <header class="container">
+        <a href="../index.html" class="back-button">← Kembali ke Menu</a>
+        <h1>Quiz Latihan: Hukum Ohm</h1>
+    </header>
+
+    <main id="app-container" class="container">
+        <div class="module">
+            
+            <p>Uji pemahaman Anda tentang materi Modul 1. Pilih jawaban yang menurut Anda paling tepat untuk setiap pertanyaan.</p>
+
+            <div class="quiz-container">
+                
+                <div class="question-container" id="q1-container">
+                    <h3>Pertanyaan 1</h3>
+                    <p class="question-text">Apa satuan untuk mengukur Hambatan (Resistance)?</p>
+                    <div class="answer-options">
+                        <label class="option"><input type="radio" name="q1" value="volt"> Volt (V)</label>
+                        <label class="option"><input type="radio" name="q1" value="ampere"> Ampere (A)</label>
+                        <label class="option"><input type="radio" name="q1" value="ohm"> Ohm (Ω)</label>
+                    </div>
+                </div>
+
+                <div class="question-container" id="q2-container">
+                    <h3>Pertanyaan 2</h3>
+                    <p class="question-text">Berdasarkan rumus $ I = V / R $, jika Tegangan (V) adalah 20V dan Hambatan (R) adalah 5Ω, berapakah Arus (I)?</p>
+                    <div class="answer-options">
+                        <label class="option"><input type="radio" name="q2" value="4a"> 4 A</label>
+                        <label class="option"><input type="radio" name="q2" value="0.25a"> 0.25 A</label>
+                        <label class="option"><input type="radio" name="q2" value="100a"> 100 A</label>
+                    </div>
+                </div>
+
+                <div class="question-container" id="q3-container">
+                    <h3>Pertanyaan 3</h3>
+                    <p class="question-text">Jika Tegangan (V) dalam sirkuit tetap, namun nilai Hambatan (R) Anda perbesar 2x lipat, apa yang akan terjadi pada Arus (I)?</p>
+                    <div class="answer-options">
+                        <label class="option"><input type="radio" name="q3" value="naik"> Arus (I) akan ikut naik 2x lipat</label>
+                        <label class="option"><input type="radio" name="q3" value="turun"> Arus (I) akan turun menjadi setengahnya</label>
+                        <label class="option"><input type="radio" name="q3" value="tetap"> Arus (I) akan tetap sama</label>
+                    </div>
+                </div>
+            </div>
+
+            <button id="check-quiz-btn">Periksa Jawaban</button>
+            
+            <div id="quiz-result" class="hidden">
+                <h3>Hasil Anda:</h3>
+                <p id="result-text">Anda menjawab 0 dari 3 pertanyaan dengan benar.</p>
+                <div id="result-feedback"></div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        MathJax = {
+          tex: { inlineMath: [['$', '$']] }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+    
+    <script src="../script/script-quiz-1.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,390 @@
+/* --- Impor Font Modern & Soft --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* --- Variabel Warna (Tema Soft Light) --- */
+:root {
+    --bg-light-primary: #FDFBFA;   /* Background: Putih gading / creamy */
+    --bg-light-secondary: #FFFFFF; /* Container: Putih bersih */
+    --bg-light-tertiary: #FFF8F9;  /* Modul: Pink sangat-sangat muda */
+    
+    --text-dark: #4B4B4B;         /* Teks Utama: Abu-abu gelap (tidak hitam) */
+    --text-muted: #9E9E9E;       /* Teks Status: Abu-abu medium */
+    
+    --accent-primary: #E57373;   /* Aksen Tombol: Soft Pink / Coral */
+    --accent-primary-hover: #D96565;
+    
+    --accent-heading: #BA68C8;   /* Aksen Judul: Soft Lavender */
+    --accent-result: #FFB74D;    /* Aksen Hasil: Soft Orange */
+}
+
+/* --- Style Dasar --- */
+body {
+    font-family: 'Poppins', sans-serif; /* Font baru yang lebih bulat/soft */
+    background-color: var(--bg-light-primary);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* --- Container Utama --- */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 25px;
+    background-color: var(--bg-light-secondary);
+    border-radius: 16px; /* Lebih rounded/soft */
+    /* Shadow halus untuk efek "mengambang" */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+header {
+    border-bottom: 2px solid var(--bg-light-tertiary);
+    padding-bottom: 15px;
+}
+
+/* Header di Menu (rata tengah) */
+header:not(:has(.back-button)) {
+    text-align: center;
+}
+/* Konten Menu (rata tengah) */
+#menu-container {
+    text-align: center;
+}
+
+header h1 {
+    color: var(--text-dark); /* Ganti dari putih ke gelap */
+    margin: 0;
+}
+header p {
+    color: var(--text-muted);
+    font-size: 1.1em;
+}
+
+/* --- Judul Konten --- */
+h2, h3 {
+    color: var(--accent-heading); /* Warna lavender */
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 8px;
+}
+
+/* --- Modul Belajar --- */
+.module {
+    background-color: var(--bg-light-tertiary); /* Warna pink sangat muda */
+    border-radius: 12px; /* Lebih rounded */
+    padding: 20px;
+    margin-top: 25px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.module:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Area Interaktif --- */
+.interactive-tool {
+    background-color: var(--bg-light-primary);
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+    border: 1px solid #F1F1F1;
+}
+.interactive-tool label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600; /* Sedikit lebih tebal */
+    color: var(--text-dark);
+}
+
+.input-field {
+    width: calc(100% - 24px);
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px; /* Lebih rounded */
+    background-color: var(--bg-light-secondary);
+    color: var(--text-dark);
+    font-size: 1.1em;
+}
+.input-field:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(229, 115, 115, 0.2);
+}
+
+/* --- Tombol (Button) --- */
+button {
+    padding: 12px 20px;
+    background-color: var(--accent-primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+button:hover {
+    background-color: var(--accent-primary-hover);
+    transform: scale(1.02);
+}
+button:active {
+    transform: scale(0.98);
+}
+
+/* --- Tampilan Hasil --- */
+h4 {
+    color: var(--text-dark);
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+#i-result, #resistor-result, #i-result-display {
+    font-weight: 600;
+    color: var(--accent-result);
+    font-size: 1.4em;
+    padding: 5px 10px;
+    background-color: rgba(255, 183, 77, 0.1);
+    border-radius: 6px;
+}
+
+/* --- Style Halaman Menu (index.html) --- */
+.module-menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.module-card {
+    background-color: var(--bg-light-tertiary);
+    border-radius: 12px;
+    padding: 20px;
+    text-decoration: none;
+    color: var(--text-dark);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-left: 5px solid var(--accent-primary);
+    text-align: left; /* Paksa rata kiri di dalam kartu */
+}
+.module-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.07);
+    color: var(--accent-heading);
+}
+.module-card h3 {
+    margin-top: 0;
+    color: var(--accent-heading);
+}
+.module-card p {
+    color: var(--text-muted);
+}
+.module-card.disabled {
+    background-color: #F5F5F5;
+    border-left-color: #E0E0E0;
+    color: var(--text-muted);
+    opacity: 0.8;
+    pointer-events: none;
+}
+.module-card.disabled h3 {
+    color: var(--text-muted);
+}
+
+/* --- Tombol Kembali (di Halaman Modul) --- */
+.back-button {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: var(--bg-light-tertiary);
+    color: var(--text-dark);
+    text-decoration: none;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    transition: background-color 0.2s ease;
+    font-weight: 600;
+}
+.back-button:hover {
+    background-color: #FCE4EC; /* Pink lebih jelas saat hover */
+    color: var(--accent-primary-hover);
+}
+
+/* --- MODUL 1: Visualisasi Lampu --- */
+.visualization { margin-top: 20px; padding-top: 15px; border-top: 1px dashed #E0E0E0; }
+.visualization p { font-weight: 600; color: var(--text-dark); }
+.lampu-off { font-size: 50px; filter: grayscale(100%) opacity(0.3); transition: all 0.3s ease; }
+.lampu-on { font-size: 50px; filter: grayscale(0%) opacity(1); text-shadow: 0 0 15px #FFD700; transition: all 0.3s ease; }
+#lampu-status { color: var(--text-muted); font-style: italic; }
+
+/* --- MODUL 2: Kalkulator Resistor --- */
+.resistor-visualization { display: flex; justify-content: center; align-items: center; padding: 30px 0; }
+.resistor-body { display: flex; align-items: center; background-color: #f5deb3; height: 60px; width: 250px; border-radius: 15px; border: 3px solid #d2b48c; position: relative; }
+.wire { height: 4px; width: 50px; background-color: #808080; }
+.band { height: 100%; width: 20px; background-color: transparent; border-right: 2px solid rgba(0,0,0,0.1); border-left: 2px solid rgba(0,0,0,0.1); }
+#res-band-1 { margin-left: 40px; }
+#res-band-2 { margin-left: 10px; }
+#res-band-3 { margin-left: 10px; }
+#res-band-4 { margin-left: 30px; }
+.resistor-controls { display: flex; justify-content: space-between; gap: 10px; margin-top: 15px; }
+.band-select { width: 100%; padding: 10px; background-color: var(--bg-light-secondary); color: var(--text-dark); border: 1px solid #E0E0E0; border-radius: 8px; font-size: 0.9em; }
+.color-hitam   { background-color: #000000; }
+.color-coklat  { background-color: #8B4513; }
+.color-merah   { background-color: #FF0000; }
+.color-oranye  { background-color: #FFA500; }
+.color-kuning  { background-color: #FFFF00; }
+.color-hijau   { background-color: #008000; }
+.color-biru    { background-color: #0000FF; }
+.color-ungu    { background-color: #800080; }
+.color-abuabu  { background-color: #808080; }
+.color-putih   { background-color: #FFFFFF; }
+.color-emas    { background-color: #FFD700; }
+.color-perak   { background-color: #C0C0C0; }
+.color-kosong  { background-color: transparent; }
+
+/* --- MODUL 3: Arus Listrik --- */
+.current-controls { padding-bottom: 20px; }
+.current-controls label { display: block; margin: 15px 0 5px 0; font-weight: 600; color: var(--text-dark); }
+.slider { -webkit-appearance: none; width: 100%; height: 10px; border-radius: 5px; background: #EEE; border: 1px solid #E0E0E0; outline: none; opacity: 0.7; -webkit-transition: .2s; transition: opacity .2s; }
+.slider:hover { opacity: 1; }
+.slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--accent-primary); cursor: pointer; }
+.slider::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--accent-primary); cursor: pointer; }
+.wire-visualization-container { background-color: var(--bg-light-primary); border-radius: 8px; padding: 10px; border: 1px solid #F1F1F1; }
+.wire-visualization { height: 40px; width: 100%; background-color: #E0E0E0; border-radius: 20px; position: relative; overflow: hidden; background-image: repeating-linear-gradient( -45deg, var(--accent-primary), var(--accent-primary) 10px, #E0E0E0 10px, #E0E0E0 20px ); background-size: 28px 28px; animation: flow-animation 5s linear infinite; animation-play-state: paused; }
+@keyframes flow-animation { from { background-position-x: 0; } to { background-position-x: 28px; } }
+
+/* --- MODUL 4: Transistor --- */
+.transistor-controls { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+.switch-toggle { position: relative; display: inline-block; width: 60px; height: 34px; }
+.switch-toggle input { opacity: 0; width: 0; height: 0; }
+.slider-toggle { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; -webkit-transition: .4s; transition: .4s; border-radius: 34px; border: 1px solid #BDBDBD; }
+.slider-toggle:before { position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 3px; background-color: white; -webkit-transition: .4s; transition: .4s; border-radius: 50%; box-shadow: 0 2px 2px rgba(0,0,0,0.1); }
+input:checked + .slider-toggle { background-color: var(--accent-primary); border-color: var(--accent-primary-hover); }
+input:checked + .slider-toggle:before { -webkit-transform: translateX(26px); -ms-transform: translateX(26px); transform: translateX(26px); }
+.transistor-flow-visualization label { display: block; margin-top: 15px; color: var(--text-dark); font-weight: 600; }
+.flow-viz { background-image: repeating-linear-gradient( -45deg, var(--accent-primary), var(--accent-primary) 10px, #E0E0E0 10px, #E0E0E0 20px ); background-size: 28px 28px; animation: flow-animation 5s linear infinite; animation-play-state: paused; }
+#base-flow-viz { height: 15px; border-radius: 10px; animation-duration: 2s; background-color: #E0E0E0; }
+#collector-flow-viz { height: 40px; border-radius: 20px; animation-duration: 0.5s; background-color: #E0E0E0; }
+.transistor-output { text-align: center; margin-top: 25px; padding-top: 20px; border-top: 1px dashed #E0E0E0; }
+.led-off { font-size: 50px; filter: grayscale(100%) opacity(0.3); transition: all 0.3s ease; }
+.led-on { font-size: 50px; filter: grayscale(0%) opacity(1); text-shadow: 0 0 8px #FFC107, 0 0 20px #FFC107; transition: all 0.3s ease; }
+#transistor-status { color: var(--text-muted); font-weight: 600; }
+
+/* --- Style untuk Kontainer Materi (Baru) --- */
+
+.materi-container {
+    background-color: var(--bg-light-primary);
+    padding: 1px 20px 10px 20px; /* Padding atas 1px untuk trik margin */
+    border-radius: 8px;
+    margin-top: 15px;
+    border: 1px solid #F1F1F1;
+}
+
+.materi-container p {
+    color: var(--text-dark);
+    line-height: 1.7; /* Spasi antar baris lebih nyaman */
+}
+
+.materi-container ul {
+    padding-left: 20px;
+}
+.materi-container li {
+    margin-bottom: 10px;
+}
+
+.rumus-box {
+    background-color: var(--bg-light-tertiary);
+    border-left: 5px solid var(--accent-result); /* Aksen oranye */
+    padding: 15px;
+    margin: 20px 0;
+    font-size: 1.2em;
+    font-weight: 600;
+    text-align: center;
+    color: var(--accent-heading); /* Warna lavender */
+    border-radius: 0 8px 8px 0;
+}
+
+/* Judul khusus untuk simulasi, biar ada jarak */
+.simulasi-title {
+    margin-top: 30px; /* Beri jarak atas dari materi */
+}
+
+/* --- Style untuk Halaman Quiz --- */
+
+/* Kartu khusus untuk quiz di menu */
+.quiz-card {
+    border-left-color: var(--accent-result); /* Warna oranye */
+}
+.quiz-card:hover {
+    color: var(--accent-result);
+}
+.quiz-card h3 {
+    color: var(--accent-result);
+}
+
+.question-container {
+    background-color: var(--bg-light-primary);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #F1F1F1;
+    transition: background-color 0.3s ease;
+}
+
+.question-text {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.answer-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.option {
+    display: block;
+    padding: 12px;
+    background-color: var(--bg-light-secondary);
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left; /* Pastikan rata kiri */
+}
+.option:hover {
+    background-color: var(--bg-light-tertiary);
+    border-color: var(--accent-primary);
+}
+.option input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* Style untuk hasil (setelah dicek) */
+.option.correct {
+    background-color: #E8F5E9; /* Hijau muda */
+    border-color: #4CAF50; /* Hijau */
+    font-weight: 600;
+}
+.option.incorrect {
+    background-color: #FFEBEE; /* Merah muda */
+    border-color: #F44336; /* Merah */
+}
+.question-container.correct-answer {
+    background-color: #F1F8E9; /* Latar hijau super muda */
+}
+.question-container.incorrect-answer {
+    background-color: #FFEBEE; /* Latar merah super muda */
+}
+
+/* Style untuk kotak hasil */
+#quiz-result {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: var(--bg-light-tertiary);
+    border-radius: 8px;
+    text-align: center;
+}
+#quiz-result.hidden {
+    display: none;
+}
+#result-text {
+    font-size: 1.2em;
+    font-weight: 600;
+}

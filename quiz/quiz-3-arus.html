@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Arus Listrik</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <header class="container">
+        <a href="../index.html" class="back-button">← Kembali ke Menu</a>
+        <h1>Quiz Latihan: Arus Listrik (I)</h1>
+    </header>
+
+    <main id="app-container" class="container">
+        <div class="module">
+            
+            <p>Uji pemahaman Anda tentang materi Modul 3. Pilih jawaban yang menurut Anda paling tepat.</p>
+
+            <div class="quiz-container">
+                
+                <div class="question-container" id="q1-container">
+                    <h3>Pertanyaan 1</h3>
+                    <p class="question-text">Apa satuan SI (Standar Internasional) untuk Arus Listrik?</p>
+                    <div class="answer-options">
+                        <label class="option"><input type="radio" name="q1" value="ohm"> Ohm (Ω)</label>
+                        <label class="option"><input type="radio" name="q1" value="volt"> Volt (V)</label>
+                        <label class="option"><input type="radio" name="q1" value="ampere"> Ampere (A)</label>
+                    </div>
+                </div>
+
+                <div class="question-container" id="q2-container">
+                    <h3>Pertanyaan 2</h3>
+                    <p class="question-text">Dalam analogi pipa air, Arus Listrik (I) paling tepat diibaratkan sebagai...</p>
+                    <div class="answer-options">
+                        <label class="option"><input type="radio" name="q2" value="tekanan"> Tekanan air di dalam tandon.</label>
+                        <label class="option"><input type="radio" name="q2" value="aliran"> Banyaknya volume air yang mengalir per detik.</label>
+                        <label class="option"><input type="radio" name="q2" value="sumbatan"> Penyempitan atau sumbatan pada pipa.</label>
+                    </div>
+                </div>
+
+                <div class="question-container" id="q3-container">
+                    <h3>Pertanyaan 3</h3>
+                    <p class="question-text">Menurut Hukum Ohm ($I = V / R$), jika Tegangan (V) <strong>dinaikkan</strong> sementara Hambatan (R) tetap, apa yang akan terjadi pada Arus (I)?</p>
+                    <div class="answer-options">
+                        <label class="option"><input type="radio" name="q3" value="naik"> Arus (I) akan ikut naik.</label>
+                        <label class="option"><input type="radio" name="q3" value="turun"> Arus (I) akan turun.</label>
+                        <label class="option"><input type="radio" name="q3" value="tetap"> Arus (I) akan tetap sama.</label>
+                    </div>
+                </div>
+
+                <div class="question-container" id="q4-container">
+                    <h3>Pertanyaan 4</h3>
+                    <p class="question-text">Masih menurut Hukum Ohm ($I = V / R$), jika Hambatan (R) <strong>diperbesar</strong> sementara Tegangan (V) tetap, apa yang akan terjadi pada Arus (I)?</p>
+                    <div class="answer-options">
+                        <label class="option"><input type="radio" name="q4" value="naik"> Arus (I) akan ikut naik.</label>
+                        <label class="option"><input type="radio" name="q4" value="turun"> Arus (I) akan turun.</label>
+                        <label class="option"><input type="radio" name="q4" value="tetap"> Arus (I) akan tetap sama.</label>
+                    </div>
+                </div>
+            </div>
+
+            <button id="check-quiz-btn">Periksa Jawaban</button>
+            
+            <div id="quiz-result" class="hidden">
+                <h3>Hasil Anda:</h3>
+                <p id="result-text">Anda menjawab 0 dari 4 pertanyaan dengan benar.</p>
+                <div id="result-feedback"></div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        MathJax = {
+          tex: { inlineMath: [['$', '$']] }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+    
+    <script src="../script/script-quiz-3.js"></script>
+
+</body>
+</html>

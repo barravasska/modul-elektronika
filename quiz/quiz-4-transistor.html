@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Transistor</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <header class="container">
+        <a href="../index.html" class="back-button">← Kembali ke Menu</a>
+        <h1>Quiz Latihan: Transistor</h1>
+    </header>
+
+    <main id="app-container" class="container">
+        <div class="module">
+            
+            <p>Uji pemahaman Anda tentang materi Modul 4. Pilih jawaban yang menurut Anda paling tepat.</p>
+
+            <div class="quiz-container">
+                
+                <div class="question-container" id="q1-container">
+                    <h3>Pertanyaan 1</h3>
+                    <p class="question-text">Apa dua fungsi utama transistor yang dibahas di modul?</p>
+                    <div class="answer-options">
+                        <label class="option"><input type="radio" name="q1" value="a"> Saklar (Switch) dan Penguat (Amplifier).</label>
+                        <label class="option"><input type="radio" name="q1" value="b"> Resistor dan Kapasitor.</label>
+                        <label class="option"><input type="radio" name="q1" value="c"> Penghasil Tegangan dan Penyimpan Arus.</label>
+                    </div>
+                </div>
+
+                <div class="question-container" id="q2-container">
+                    <h3>Pertanyaan 2</h3>
+                    <p class="question-text">Dalam analogi "Keran Air" untuk transistor BJT, bagian manakah yang berfungsi sebagai <strong>gagang keran</strong> (pengontrol)?</p>
+                    <div class="answer-options">
+                        <label class="option"><input type="radio" name="q2" value="a"> Kolektor (C)</label>
+                        <label class="option"><input type="radio" name="q2" value="b"> Emitor (E)</label>
+                        <label class="option"><input type="radio" name="q2" value="c"> Basis (B)</label>
+                    </div>
+                </div>
+
+                <div class="question-container" id="q3-container">
+                    <h3>Pertanyaan 3</h3>
+                    <p class="question-text">Apa yang terjadi pada "aliran kolektor" (arus besar) jika <strong>tidak ada</strong> "arus basis" (arus kecil) yang diberikan?</p>
+                    <div class="answer-options">
+                        <label class="option"><input type="radio" name="q3" value="a"> Arus kolektor tetap mengalir deras.</label>
+                        <label class="option"><input type="radio" name="q3" value="b"> Arus kolektor terhambat / tidak bisa mengalir.</label>
+                        <label class="option"><input type="radio" name="q3" value="c"> Arus kolektor mengalir setengahnya.</label>
+                    </div>
+                </div>
+
+                <div class="question-container" id="q4-container">
+                    <h3>Pertanyaan 4</h3>
+                    <p class="question-text">Untuk menyalakan LED (beban) yang terhubung ke Kolektor (seperti di simulasi), apa yang harus kita lakukan pada Basis?</p>
+                    <div class="answer-options">
+                        <label class="option"><input type="radio" name="q4" value="a"> Memberikan arus kecil ke Basis.</label>
+                        <label class="option"><input type="radio" name="q4" value="b"> Membiarkan Basis tidak terhubung (mengambang).</label>
+                        <label class="option"><input type="radio" name="q4" value="c"> Menghubungkan Basis langsung ke Emitor.</label>
+                    </div>
+                </div>
+            </div>
+
+            <button id="check-quiz-btn">Periksa Jawaban</button>
+            
+            <div id="quiz-result" class="hidden">
+                <h3>Hasil Anda:</h3>
+                <p id="result-text">Anda menjawab 0 dari 4 pertanyaan dengan benar.</p>
+                <div id="result-feedback"></div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="../script/script-quiz-4.js"></script>
+
+</body>
+</html>

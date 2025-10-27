@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Resistor</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <header class="container">
+        <a href="../index.html" class="back-button">← Kembali ke Menu</a>
+        <h1>Quiz Latihan: Resistor</h1>
+    </header>
+
+    <main id="app-container" class="container">
+        <div class="module">
+            
+            <p>Uji pemahaman Anda tentang materi Modul 2. Pilih jawaban yang menurut Anda paling tepat.</p>
+
+            <div class="quiz-container">
+                
+                <div class="question-container" id="q1-container">
+                    <h3>Pertanyaan 1</h3>
+                    <p class="question-text">Manakah dari berikut ini yang merupakan fungsi <strong>utama</strong> dari sebuah resistor?</p>
+                    <div class="answer-options">
+                        <label class="option"><input type="radio" name="q1" value="a"> Menyimpan muatan listrik.</label>
+                        <label class="option"><input type="radio" name="q1" value="b"> Menghambat atau membatasi aliran arus listrik.</label>
+                        <label class="option"><input type="radio" name="q1" value="c"> Menguatkan sinyal listrik.</label>
+                        <label class="option"><input type="radio" name="q1" value="d"> Menghasilkan listrik.</label>
+                    </div>
+                </div>
+
+                <div class="question-container" id="q2-container">
+                    <h3>Pertanyaan 2</h3>
+                    <p class="question-text">Apa satuan yang digunakan untuk mengukur nilai hambatan sebuah resistor?</p>
+                    <div class="answer-options">
+                        <label class="option"><input type="radio" name="q2" value="a"> Volt (V)</label>
+                        <label class="option"><input type="radio" name="q2" value="b"> Ampere (A)</label>
+                        <label class="option"><input type="radio" name="q2" value="c"> Watt (W)</label>
+                        <label class="option"><input type="radio" name="q2" value="d"> Ohm (Ω)</label>
+                    </div>
+                </div>
+
+                <div class="question-container" id="q3-container">
+                    <h3>Pertanyaan 3</h3>
+                    <p class="question-text">Sebuah resistor 4 gelang memiliki urutan warna: <strong>Coklat, Hitam, Merah, Emas</strong>. Berapakah nilainya?</p>
+                    <div class="answer-options">
+                        <label class="option"><input type="radio" name="q3" value="a"> 10 Ω (Ohm) ±5%</label>
+                        <label class="option"><input type="radio" name="q3" value="b"> 100 Ω (Ohm) ±10%</label>
+                        <label class="option"><input type="radio" name="q3" value="c"> 1.000 Ω (1 kΩ) ±5%</label>
+                        <label class="option"><input type="radio" name="q3" value="d"> 200 Ω (Ohm) ±5%</label>
+                    </div>
+                </div>
+
+                <div class="question-container" id="q4-container">
+                    <h3>Pertanyaan 4</h3>
+                    <p class="question-text">Anda membutuhkan resistor <strong>47 kΩ (47.000 Ω)</strong> dengan toleransi ±10%. Urutan gelang warna apa yang akan Anda cari?</p>
+                    <div class="answer-options">
+                        <label class="option"><input type="radio" name="q4" value="a"> Kuning, Ungu, Oranye, Perak</label>
+                        <label class="option"><input type="radio" name="q4" value="b"> Kuning, Ungu, Merah, Emas</label>
+                        <label class="option"><input type="radio" name="q4" value="c"> Merah, Kuning, Hijau, Kosong</label>
+                        <label class="option"><input type="radio" name="q4" value="d"> Oranye, Kuning, Merah, Perak</label>
+                    </div>
+                </div>
+                
+                <div class="question-container" id="q5-container">
+                    <h3>Pertanyaan 5</h3>
+                    <p class="question-text">Pada resistor 4 gelang, gelang ke-3 (tiga) berfungsi untuk menentukan...</p>
+                    <div class="answer-options">
+                        <label class="option"><input type="radio" name="q5" value="a"> Angka pertama nilai resistor.</label>
+                        <label class="option"><input type="radio" name="q5" value="b"> Nilai toleransi (seberapa akurat nilainya).</label>
+                        <label class="option"><input type="radio" name="q5" value="c"> Faktor pengali (jumlah nol atau pembagi).</label>
+                        <label class="option"><input type="radio" name="q5" value="d"> Angka kedua nilai resistor.</label>
+                    </div>
+                </div>
+            </div>
+
+            <button id="check-quiz-btn">Periksa Jawaban</button>
+            
+            <div id="quiz-result" class="hidden">
+                <h3>Hasil Anda:</h3>
+                <p id="result-text">Anda menjawab 0 dari 5 pertanyaan dengan benar.</p>
+                <div id="result-feedback"></div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="../script/script-quiz-2.js"></script>
+
+</body>
+</html>

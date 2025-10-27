@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul 4: Transistor</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script>
+        MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']]
+          }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+    </head>
+<body>
+
+    <header class="container">
+        <a href="index.html" class="back-button">← Kembali ke Menu</a>
+        <h1>Modul 4: Transistor</h1>
+    </header>
+
+    <main id="app-container" class="container">
+
+        <div class="module" id="modul-transistor">
+            
+            <h3>Apa itu Transistor?</h3>
+            <div class="materi-container">
+                <p>Transistor adalah komponen semikonduktor yang memiliki peran sangat penting dalam dunia elektronik modern. Anggaplah transistor sebagai "otak" dari sirkuit. Fungsi utamanya ada dua: sebagai <strong>saklar elektronik (switch)</strong> atau sebagai <strong>penguat (amplifier)</strong>.</p>
+                <p>Di modul ini, kita akan fokus pada fungsi dasarnya sebagai <strong>saklar</strong>.</p>
+                <p>Analogi terbaik untuk transistor (tipe BJT) adalah <strong>Keran Air</strong>:</p>
+                
+                <ul>
+                    <li><strong>Basis (B):</strong> Ini adalah gagang keran. Dibutuhkan aliran air yang <em>sangat kecil</em> (Arus Basis, $I_B$) untuk memutar gagang ini.</li>
+                    <li><strong>Kolektor (C):</strong> Ini adalah pipa utama tempat air masuk (sumber air besar).</li>
+                    <li><strong>Emitor (E):</strong> Ini adalah pipa tempat air keluar.</li>
+                </ul>
+                <p>Prinsip kerjanya: <strong>Anda tidak perlu menyentuh aliran air utama</strong>. Anda cukup menggunakan "arus kecil" di Basis untuk "membuka gerbang", yang kemudian mengizinkan "arus besar" (Arus Kolektor, $I_C$) untuk mengalir deras dari Kolektor ke Emitor. Jika tidak ada arus basis ($I_B = 0$), keran tertutup rapat dan tidak ada arus $I_C$ yang bisa lewat.</p>
+            </div>
+
+            <h3 class="simulasi-title">Simulasi Transistor sebagai Saklar</h3>
+            <p>Sekarang, mari kita simulasikan analogi "Keran Air" tersebut. Coba nyalakan saklar (memberi Arus Basis) dan lihat apa yang terjadi pada aliran utama dan lampu.</p>
+            
+            <div class="interactive-tool">
+                
+                <div class="transistor-controls">
+                    <label>Kontrol Arus Basis (Keran Kecil):</label>
+                    <label class="switch-toggle">
+                        <input type="checkbox" id="transistor-switch">
+                        <span class="slider-toggle"></span>
+                    </label>
+                    <span>(OFF / ON)</span>
+                </div>
+
+                <div class="transistor-flow-visualization">
+                    <label>Aliran Basis (Arus Kecil $I_B$):</label>
+                    <div class="wire-visualization flow-viz" id="base-flow-viz"></div>
+                    
+                    <label>Aliran Kolektor (Arus Besar $I_C$):</label>
+                    <div class="wire-visualization flow-viz" id="collector-flow-viz"></div>
+                </div>
+
+                <div class="transistor-output">
+                    <h4>Output (Beban):</h4>
+                    <div id="transistor-led" class="led-off">💡</div>
+                    <p id="transistor-status">Status: Tidak ada Arus Basis, LED Mati.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    
+    <script src="script/script-modul-4.js"></script>
+
+</body>
+</html>

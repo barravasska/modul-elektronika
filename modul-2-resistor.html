@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul 2: Resistor</title>
+    <link rel="stylesheet" href="css/style.css"> 
+    
+    <script>
+        MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']]
+          }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+    </head>
+<body>
+
+    <header class="container">
+        <a href="index.html" class="back-button">← Kembali ke Menu</a>
+        <h1>Modul 2: Resistor</h1>
+    </header>
+
+    <main id="app-container" class="container">
+        
+        <div class="module" id="modul-resistor">
+
+            <h3>Apa itu Resistor?</h3>
+            <div class="materi-container">
+                <p>Resistor adalah komponen elektronik pasif yang berfungsi untuk menahan atau membatasi aliran arus listrik dalam suatu rangkaian. Sederhananya, resistor mengatur besar arus dan menurunkan tingkat tegangan dalam sirkuit. Nilai hambatan pada resistor diukur dalam satuan <strong>Ohm (Ω)</strong>.</p>
+                <p>Fungsi utama resistor:</p>
+                <ul>
+                    <li><strong>Membatasi arus:</strong> Menghambat aliran listrik agar sesuai dengan kebutuhan rangkaian.</li>
+                    <li><strong>Mengatur tegangan:</strong> Membantu membagi tegangan pada komponen lain dalam rangkaian.</li>
+                    <li><strong>Memfilter sinyal:</strong> Dalam kombinasi dengan kapasitor atau induktor, resistor dapat digunakan sebagai filter sinyal elektronik.</li>
+                </ul>
+                
+                <p>Hubungan antara resistor (R), tegangan (V), dan arus (I) dijelaskan oleh <strong>Hukum Ohm</strong> (yang dibahas di Modul 1):</p>
+                <div class="rumus-box">
+                    $$ V = I \times R $$
+                </div>
+                <p>Dari rumus ini, kita bisa melihat bahwa nilai hambatan (R) akan menentukan seberapa besar arus (I) yang bisa mengalir pada tegangan (V) yang sama.</p>
+                </div>
+            
+            <h3 class="simulasi-title">Simulasi Kalkulator Gelang Warna</h3>
+            <p>Cara paling umum untuk mengetahui nilai resistor adalah dengan membaca gelang warnanya. Coba gunakan kalkulator di bawah ini untuk berlatih.</p>
+
+            <div class="interactive-tool">
+                
+                <div class="resistor-visualization">
+                    <div class="resistor-body">
+                        <div class="wire wire-left"></div>
+                        <div class="band" id="res-band-1"></div>
+                        <div class="band" id="res-band-2"></div>
+                        <div class="band" id="res-band-3"></div>
+                        <div class="band" id="res-band-4"></div>
+                        <div class="wire wire-right"></div>
+                    </div>
+                </div>
+
+                <div class="resistor-controls">
+                    <select id="band1" class="band-select">
+                        <option value="coklat">Coklat (1)</option>
+                        <option value="merah">Merah (2)</option>
+                        <option value="oranye">Oranye (3)</option>
+                        <option value="kuning">Kuning (4)</option>
+                        <option value="hijau">Hijau (5)</option>
+                        <option value="biru">Biru (6)</option>
+                        <option value="ungu">Ungu (7)</option>
+                        <option value="abuabu">Abu-abu (8)</option>
+                        <option value="putih">Putih (9)</option>
+                    </select>
+                    
+                    <select id="band2" class="band-select">
+                        <option value="hitam">Hitam (0)</option>
+                        <option value="coklat">Coklat (1)</option>
+                        <option value="merah">Merah (2)</option>
+                        <option value="oranye">Oranye (3)</option>
+                        <option value="kuning">Kuning (4)</option>
+                        <option value="hijau">Hijau (5)</option>
+                        <option value="biru">Biru (6)</option>
+                        <option value="ungu">Ungu (7)</option>
+                        <option value="abuabu">Abu-abu (8)</option>
+                        <option value="putih">Putih (9)</option>
+                    </select>
+                    
+                    <select id="band3" class="band-select">
+                        <option value="hitam">Hitam (x1 Ω)</option>
+                        <option value="coklat">Coklat (x10 Ω)</option>
+                        <option value="merah">Merah (x100 Ω)</option>
+                        <option value="oranye">Oranye (x1 kΩ)</option>
+                        <option value="kuning">Kuning (x10 kΩ)</option>
+                        <option value="hijau">Hijau (x100 kΩ)</option>
+                        <option value="biru">Biru (x1 MΩ)</option>
+                        <option value="emas">Emas (x0.1 Ω)</option>
+                        <option value="perak">Perak (x0.01 Ω)</option>
+                    </select>
+                    
+                    <select id="band4" class="band-select">
+                        <option value="emas">Emas (±5%)</option>
+                        <option value="perak">Perak (±10%)</option>
+                        <option value="coklat">Coklat (±1%)</option>
+                        <option value="merah">Merah (±2%)</option>
+                        <option value="hijau">Hijau (±0.5%)</option>
+                        <option value="biru">Biru (±0.25%)</option>
+                        <option value="ungu">Ungu (±0.1%)</option>
+                        <option value="kosong">Kosong (±20%)</option>
+                    </select>
+                </div>
+
+                <h4>Nilai Resistor: <span id="resistor-result">...</span></h4>
+            </div>
+        </div>
+
+    </main>
+    
+    <script src="script/script-modul-2.js"></script>
+
+</body>
+</html>

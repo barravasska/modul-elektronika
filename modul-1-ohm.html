@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul 1: Hukum Ohm</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="container">
+        <a href="index.html" class="back-button">← Kembali ke Menu</a>
+        <h1>Modul 1: Hukum Ohm</h1>
+    </header>
+
+    <main id="app-container" class="container">
+        
+        <div class="module" id="modul-hukum-ohm">
+            
+            <h3>Apa itu Hukum Ohm?</h3>
+            <div class="materi-container">
+                <p>Hukum Ohm adalah salah satu prinsip paling fundamental dalam elektronika. Hukum ini dinamai dari fisikawan Jerman, <strong>Georg Ohm</strong>.</p>
+                <p>Hukum ini menjelaskan hubungan antara tiga variabel utama dalam sebuah sirkuit listrik:</p>
+                <ul>
+                    <li><strong>Tegangan (Voltage / V):</strong> Ini adalah "dorongan" atau "tekanan" yang membuat listrik mengalir. Ibaratnya tekanan air di dalam tandon. Satuannya adalah <strong>Volt (V)</strong>.</li>
+                    <li><strong>Arus (Current / I):</strong> Ini adalah "aliran" listrik itu sendiri, atau banyaknya elektron yang lewat per detik. Ibaratnya seberapa deras air yang mengalir di pipa. Satuannya adalah <strong>Ampere (A)</strong>.</li>
+                    <li><strong>Hambatan (Resistance / R):</strong> Ini adalah "penghambat" aliran listrik. Ibaratnya penyempitan pada pipa air. Satuannya adalah <strong>Ohm (Ω)</strong>.</li>
+                </ul>
+                <p>Secara matematis, rumusnya adalah:</p>
+                <div class="rumus-box">
+                    V = I × R
+                </div>
+                <p>Dari rumus itu, kita juga bisa mencari Arus (<strong>I = V / R</strong>) atau Hambatan (<strong>R = V / I</strong>).</p>
+            </div>
+
+            <h3 class="simulasi-title">Simulasi Interaktif</h3>
+            <p>Sekarang, mari kita buktikan rumus <strong>I = V / R</strong>. Coba ubah nilai Tegangan (V) dan Hambatan (R) di bawah dan lihat apa yang terjadi pada Arus (I) dan nyala lampu.</p>
+            
+            <div class="interactive-tool">
+                <label>Tegangan (V):</label>
+                <input type="number" id="v-input" value="12" class="input-field">
+                
+                <label>Hambatan (R) (Ohm):</label>
+                <input type="number" id="r-input" value="1000" class="input-field">
+                
+                <button id="calculate-btn">Hitung Arus</button>
+                
+                <h4>Hasil Arus (I): <span id="i-result">...</span> Ampere</h4>
+            </div>
+            <div class="visualization">
+                <p>Visualisasi Lampu:</p>
+                <div id="lampu" class="lampu-off">💡</div>
+                <small id="lampu-status">Lampu mati (hitung untuk melihat)</small>
+            </div>
+        </div>
+        
+    </main>
+
+    <script src="script/script-modul-1.js"></script>
+
+</body>
+</html>
