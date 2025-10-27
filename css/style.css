@@ -388,3 +388,17 @@ input:checked + .slider-toggle:before { -webkit-transform: translateX(26px); -ms
     font-size: 1.2em;
     font-weight: 600;
 }
+
+@media (max-width: 600px) {
+    
+    .nama-class-anda {
+        display: flex;
+        flex-direction: column; 
+    }
+
+    .module-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 15px; /* Sedikit mengurangi jarak di HP */
+    }
+}
