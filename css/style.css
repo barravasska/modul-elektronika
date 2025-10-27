@@ -439,3 +439,85 @@ input:checked + .slider-toggle:before { -webkit-transform: translateX(26px); -ms
 #quiz-result { margin-top: 30px; padding: 20px; background-color: var(--bg-tertiary); border-radius: 8px; text-align: center; }
 #quiz-result.hidden { display: none; }
 #result-text { font-size: 1.2em; font-weight: 600; }
+
+/* ============================================= */
+/* --- PERBAIKAN TAMPILAN MOBILE (RESPONSIVE) --- */
+/* ============================================= */
+
+/* Terapkan aturan ini jika lebar layar 768px ke bawah (Tablet & HP) */
+@media (max-width: 768px) {
+
+    /* 1. Kurangi padding di body dan container */
+    body {
+        padding: 10px; /* Kurangi dari 20px */
+    }
+    .container {
+        padding: 15px; /* Kurangi dari 25px */
+    }
+
+    /* 2. Perbaiki Header agar tidak sempit */
+    header {
+        flex-wrap: wrap; /* Izinkan item turun ke baris baru */
+        justify-content: space-between;
+    }
+    header h1 {
+        /* Judul jadi 100% jika ada tombol kembali, agar rapi */
+        flex-basis: 100%;
+        order: -1; /* Pindahkan judul ke atas tombol */
+        text-align: center; /* Selalu rata tengah di HP */
+        margin-bottom: 10px;
+        padding: 0;
+    }
+    /* Pengecualian: Biarkan H1 di menu utama tetap normal */
+    header:not(:has(.back-button)) h1 {
+        flex-basis: auto;
+        order: 0;
+        margin-bottom: 0;
+    }
+    /* Normalkan posisi tombol tema di menu utama */
+    header:not(:has(.back-button)) #theme-toggle-btn {
+        position: static; /* Hapus 'absolute' */
+        order: 2; /* Pindah ke kanan */
+    }
+    .back-button {
+        margin-bottom: 0;
+    }
+
+    /* 3. Buat Kartu Menu (index.html) tersusun ke bawah */
+    .module-menu {
+        grid-template-columns: 1fr; /* 1 kolom saja */
+        gap: 15px;
+    }
+
+    /* 4. Buat Dropdown Resistor (Modul 2) tersusun ke bawah */
+    .resistor-controls {
+        flex-direction: column; /* Susun vertikal */
+        gap: 15px; /* Beri jarak antar dropdown */
+    }
+
+    /* 5. Buat Visual Resistor (Modul 2) agar tidak overflow */
+    .resistor-body {
+        width: 100%;
+        max-width: 250px; /* Jaga ukuran maks, tapi bisa mengecil */
+        height: 50px; /* Sedikit lebih kecil */
+    }
+    #res-band-1 { margin-left: 15%; } /* Ganti ke persen */
+    #res-band-4 { margin-left: 10%; } /* Ganti ke persen */
+
+    /* 6. Buat Kalkulator Paralel (Modul 5) tersusun ke bawah */
+    .kalkulator-grid {
+        grid-template-columns: 1fr; /* 1 kolom saja */
+        gap: 15px;
+    }
+
+    /* 7. Perbesar sedikit font agar lebih mudah dibaca */
+    body {
+        font-size: 102.5%;
+    }
+    
+    /* 8. Buat tombol di Modul 4 (Transistor) lebih rapi */
+    .transistor-controls {
+        flex-direction: column; /* Susun ke bawah */
+        align-items: flex-start; /* Rata kiri */
+    }
+}
