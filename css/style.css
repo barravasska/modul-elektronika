@@ -1,30 +1,87 @@
 /* --- Impor Font Modern & Soft --- */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-/* --- Variabel Warna (Tema Soft Light) --- */
+/* ================================================= */
+/* PALET WARNA (DUAL THEME)                 */
+/* ================================================= */
+
+/* --- TEMA 1: LIGHT MODE (DEFAULT) --- */
 :root {
-    --bg-light-primary: #FDFBFA;   /* Background: Putih gading / creamy */
-    --bg-light-secondary: #FFFFFF; /* Container: Putih bersih */
-    --bg-light-tertiary: #FFF8F9;  /* Modul: Pink sangat-sangat muda */
-    
-    --text-dark: #4B4B4B;         /* Teks Utama: Abu-abu gelap (tidak hitam) */
-    --text-muted: #9E9E9E;       /* Teks Status: Abu-abu medium */
-    
-    --accent-primary: #E57373;   /* Aksen Tombol: Soft Pink / Coral */
+    --bg-primary: #FDFBFA;
+    --bg-secondary: #FFFFFF;
+    --bg-tertiary: #FFF8F9;
+    --text-primary: #4B4B4B;
+    --text-muted: #9E9E9E;
+    --text-heading: #BA68C8;
+    --accent-primary: #E57373;
     --accent-primary-hover: #D96565;
+    --accent-result: #FFB74D;
     
-    --accent-heading: #BA68C8;   /* Aksen Judul: Soft Lavender */
-    --accent-result: #FFB74D;    /* Aksen Hasil: Soft Orange */
+    --border-color: #E0E0E0;
+    --border-color-light: #F1F1F1;
+    --input-bg: var(--bg-secondary);
+    --slider-bg: #EEE;
+    --toggle-bg: #ccc;
+    --toggle-border: #BDBDBD;
+    --toggle-handle: white;
+    --shadow-color: rgba(0, 0, 0, 0.05);
+    
+    --resistor-body: #f5deb3;
+    --resistor-border: #d2b48c;
+    --wire-color: #808080;
+    
+    --quiz-correct-bg: #E8F5E9;
+    --quiz-correct-border: #4CAF50;
+    --quiz-incorrect-bg: #FFEBEE;
+    --quiz-incorrect-border: #F44336;
+    --quiz-correct-module-bg: #F1F8E9;
+    --quiz-incorrect-module-bg: #FFEBEE;
 }
+
+/* --- TEMA 2: NIGHT MODE (OVERRIDE) --- */
+[data-theme="dark"] {
+    --bg-primary: #1e2a38;
+    --bg-secondary: #2c3e50;
+    --bg-tertiary: #34495e;
+    --text-primary: #ecf0f1;
+    --text-muted: #bdc3c7;
+    --text-heading: #f39c12;
+    --accent-primary: #3498db;
+    --accent-primary-hover: #2980b9;
+    --accent-result: #f1c40f;
+    
+    --border-color: var(--bg-tertiary);
+    --border-color-light: var(--bg-secondary);
+    --input-bg: var(--bg-secondary);
+    --slider-bg: var(--bg-primary);
+    --toggle-bg: var(--bg-tertiary);
+    --toggle-border: var(--bg-primary);
+    --toggle-handle: white;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+
+    /* Resistor body tetap sama */
+    
+    --quiz-correct-bg: #2E4E30;
+    --quiz-correct-border: #4CAF50;
+    --quiz-incorrect-bg: #5A2D30;
+    --quiz-incorrect-border: #F44336;
+    --quiz-correct-module-bg: #293a2a;
+    --quiz-incorrect-module-bg: #3e2224;
+}
+
+/* ================================================= */
+/* STYLE GLOBAL (MENGGUNAKAN VARIABEL)      */
+/* ================================================= */
 
 /* --- Style Dasar --- */
 body {
-    font-family: 'Poppins', sans-serif; /* Font baru yang lebih bulat/soft */
-    background-color: var(--bg-light-primary);
-    color: var(--text-dark);
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     margin: 0;
     padding: 20px;
     line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* --- Container Utama --- */
@@ -32,84 +89,138 @@ body {
     max-width: 800px;
     margin: 20px auto;
     padding: 25px;
-    background-color: var(--bg-light-secondary);
-    border-radius: 16px; /* Lebih rounded/soft */
-    /* Shadow halus untuk efek "mengambang" */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    background-color: var(--bg-secondary);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    transition: background-color 0.3s ease;
 }
 
 header {
-    border-bottom: 2px solid var(--bg-light-tertiary);
+    border-bottom: 2px solid var(--border-color-light);
     padding-bottom: 15px;
+    /* Gunakan flex untuk mensejajarkan tombol */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* Header di Menu (rata tengah) */
-header:not(:has(.back-button)) {
-    text-align: center;
-}
-/* Konten Menu (rata tengah) */
-#menu-container {
-    text-align: center;
+/* Tombol kembali akan menempel di kiri */
+.back-button {
+    flex-shrink: 0; /* Jangan biarkan tombolnya mengecil */
 }
 
+/* Judul header akan mengisi ruang & bisa rata tengah */
 header h1 {
-    color: var(--text-dark); /* Ganti dari putih ke gelap */
+    color: var(--text-primary);
     margin: 0;
+    flex-grow: 1; /* Ambil sisa ruang */
+    /* Rata tengah jika tidak ada tombol kembali */
+    text-align: center;
+    padding: 0 15px; /* Beri jarak dari tombol */
+}
+/* Jika ADA tombol kembali, judul sedikit ke kiri */
+header:has(.back-button) h1 {
+    text-align: left;
+}
+
+/* Header di Menu (rata tengah penuh) */
+header:not(:has(.back-button)) h1 {
+    text-align: center;
+}
+header:not(:has(.back-button)) {
+    justify-content: center; /* Pusatkan semua jika tidak ada tombol kembali */
 }
 header p {
     color: var(--text-muted);
     font-size: 1.1em;
 }
 
+/* Konten Menu (rata tengah) */
+#menu-container {
+    text-align: center;
+}
+
+/* --- Tombol Theme Toggle --- */
+#theme-toggle-btn {
+    font-size: 1.5em; /* Ukuran ikon 🌙/☀️ */
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+#theme-toggle-btn:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+/* Pastikan tombol ada di pojok, sejajar dengan tombol kembali */
+header:has(.back-button) #theme-toggle-btn {
+    order: 3; /* Urutan: [Back] [H1] [Toggle] */
+}
+header:not(:has(.back-button)) #theme-toggle-btn {
+    position: absolute; /* Pojok kanan atas di menu */
+    top: 25px;
+    right: 25px;
+}
+@media (max-width: 600px) {
+    header:not(:has(.back-button)) #theme-toggle-btn {
+        position: static; /* Biarkan normal di HP */
+    }
+}
+
+
 /* --- Judul Konten --- */
 h2, h3 {
-    color: var(--accent-heading); /* Warna lavender */
-    border-bottom: 1px solid #f0f0f0;
+    color: var(--text-heading);
+    border-bottom: 1px solid var(--border-color);
     padding-bottom: 8px;
 }
 
 /* --- Modul Belajar --- */
 .module {
-    background-color: var(--bg-light-tertiary); /* Warna pink sangat muda */
-    border-radius: 12px; /* Lebih rounded */
+    background-color: var(--bg-tertiary);
+    border-radius: 12px;
     padding: 20px;
     margin-top: 25px;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
 }
 .module:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 20px var(--shadow-color);
 }
 
 /* --- Area Interaktif --- */
 .interactive-tool {
-    background-color: var(--bg-light-primary);
+    background-color: var(--bg-primary);
     padding: 20px;
     border-radius: 12px;
     margin-top: 20px;
-    border: 1px solid #F1F1F1;
+    border: 1px solid var(--border-color-light);
 }
 .interactive-tool label {
     display: block;
     margin-bottom: 5px;
-    font-weight: 600; /* Sedikit lebih tebal */
-    color: var(--text-dark);
+    font-weight: 600;
+    color: var(--text-primary);
 }
 
 .input-field {
     width: calc(100% - 24px);
     padding: 12px;
     margin-bottom: 15px;
-    border: 1px solid #E0E0E0;
-    border-radius: 8px; /* Lebih rounded */
-    background-color: var(--bg-light-secondary);
-    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--input-bg);
+    color: var(--text-primary);
     font-size: 1.1em;
 }
 .input-field:focus {
     outline: none;
     border-color: var(--accent-primary);
-    box-shadow: 0 0 0 3px rgba(229, 115, 115, 0.2);
+    box-shadow: 0 0 0 3px var(--accent-primary-hover);
 }
 
 /* --- Tombol (Button) --- */
@@ -135,16 +246,16 @@ button:active {
 
 /* --- Tampilan Hasil --- */
 h4 {
-    color: var(--text-dark);
+    color: var(--text-primary);
     font-size: 1.2em;
     margin-top: 20px;
 }
-#i-result, #resistor-result, #i-result-display {
+#i-result, #resistor-result, #i-result-display, #rp-result {
     font-weight: 600;
     color: var(--accent-result);
     font-size: 1.4em;
     padding: 5px 10px;
-    background-color: rgba(255, 183, 77, 0.1);
+    background-color: rgba(255, 183, 77, 0.1); /* Ini bisa kita biarkan universal */
     border-radius: 6px;
 }
 
@@ -155,30 +266,30 @@ h4 {
     gap: 20px;
 }
 .module-card {
-    background-color: var(--bg-light-tertiary);
+    background-color: var(--bg-tertiary);
     border-radius: 12px;
     padding: 20px;
     text-decoration: none;
-    color: var(--text-dark);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    color: var(--text-primary);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
     border-left: 5px solid var(--accent-primary);
-    text-align: left; /* Paksa rata kiri di dalam kartu */
+    text-align: left;
 }
 .module-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.07);
-    color: var(--accent-heading);
+    box-shadow: 0 10px 20px var(--shadow-color);
+    color: var(--text-heading);
 }
 .module-card h3 {
     margin-top: 0;
-    color: var(--accent-heading);
+    color: var(--text-heading);
 }
 .module-card p {
     color: var(--text-muted);
 }
 .module-card.disabled {
-    background-color: #F5F5F5;
-    border-left-color: #E0E0E0;
+    background-color: var(--bg-primary);
+    border-left-color: var(--border-color);
     color: var(--text-muted);
     opacity: 0.8;
     pointer-events: none;
@@ -191,37 +302,63 @@ h4 {
 .back-button {
     display: inline-block;
     padding: 8px 15px;
-    background-color: var(--bg-light-tertiary);
-    color: var(--text-dark);
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
     text-decoration: none;
     border-radius: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 0; /* Dihapus margin-bottom */
     transition: background-color 0.2s ease;
     font-weight: 600;
 }
 .back-button:hover {
-    background-color: #FCE4EC; /* Pink lebih jelas saat hover */
-    color: var(--accent-primary-hover);
+    background-color: var(--accent-primary-hover);
+    color: white;
 }
 
+/* --- Style Materi & Rumus --- */
+.materi-container {
+    background-color: var(--bg-primary);
+    padding: 1px 20px 10px 20px;
+    border-radius: 8px;
+    margin-top: 15px;
+    border: 1px solid var(--border-color-light);
+}
+.materi-container p { color: var(--text-primary); line-height: 1.7; }
+.materi-container ul { padding-left: 20px; }
+.materi-container li { margin-bottom: 10px; }
+.rumus-box {
+    background-color: var(--bg-tertiary);
+    border-left: 5px solid var(--accent-result);
+    padding: 15px;
+    margin: 20px 0;
+    font-size: 1.2em;
+    font-weight: 600;
+    text-align: center;
+    color: var(--text-heading);
+    border-radius: 0 8px 8px 0;
+}
+.simulasi-title { margin-top: 30px; }
+
 /* --- MODUL 1: Visualisasi Lampu --- */
-.visualization { margin-top: 20px; padding-top: 15px; border-top: 1px dashed #E0E0E0; }
-.visualization p { font-weight: 600; color: var(--text-dark); }
+.visualization { margin-top: 20px; padding-top: 15px; border-top: 1px dashed var(--border-color); }
+.visualization p { font-weight: 600; color: var(--text-primary); }
+/* Lampu (sudah ok, tidak perlu variabel) */
 .lampu-off { font-size: 50px; filter: grayscale(100%) opacity(0.3); transition: all 0.3s ease; }
 .lampu-on { font-size: 50px; filter: grayscale(0%) opacity(1); text-shadow: 0 0 15px #FFD700; transition: all 0.3s ease; }
 #lampu-status { color: var(--text-muted); font-style: italic; }
 
 /* --- MODUL 2: Kalkulator Resistor --- */
 .resistor-visualization { display: flex; justify-content: center; align-items: center; padding: 30px 0; }
-.resistor-body { display: flex; align-items: center; background-color: #f5deb3; height: 60px; width: 250px; border-radius: 15px; border: 3px solid #d2b48c; position: relative; }
-.wire { height: 4px; width: 50px; background-color: #808080; }
+.resistor-body { display: flex; align-items: center; background-color: var(--resistor-body); height: 60px; width: 250px; border-radius: 15px; border: 3px solid var(--resistor-border); position: relative; }
+.wire { height: 4px; width: 50px; background-color: var(--wire-color); }
 .band { height: 100%; width: 20px; background-color: transparent; border-right: 2px solid rgba(0,0,0,0.1); border-left: 2px solid rgba(0,0,0,0.1); }
 #res-band-1 { margin-left: 40px; }
 #res-band-2 { margin-left: 10px; }
 #res-band-3 { margin-left: 10px; }
 #res-band-4 { margin-left: 30px; }
 .resistor-controls { display: flex; justify-content: space-between; gap: 10px; margin-top: 15px; }
-.band-select { width: 100%; padding: 10px; background-color: var(--bg-light-secondary); color: var(--text-dark); border: 1px solid #E0E0E0; border-radius: 8px; font-size: 0.9em; }
+.band-select { width: 100%; padding: 10px; background-color: var(--input-bg); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.9em; }
+/* Warna gelang (sudah ok) */
 .color-hitam   { background-color: #000000; }
 .color-coklat  { background-color: #8B4513; }
 .color-merah   { background-color: #FF0000; }
@@ -238,167 +375,67 @@ h4 {
 
 /* --- MODUL 3: Arus Listrik --- */
 .current-controls { padding-bottom: 20px; }
-.current-controls label { display: block; margin: 15px 0 5px 0; font-weight: 600; color: var(--text-dark); }
-.slider { -webkit-appearance: none; width: 100%; height: 10px; border-radius: 5px; background: #EEE; border: 1px solid #E0E0E0; outline: none; opacity: 0.7; -webkit-transition: .2s; transition: opacity .2s; }
+.current-controls label { display: block; margin: 15px 0 5px 0; font-weight: 600; color: var(--text-primary); }
+.slider { -webkit-appearance: none; width: 100%; height: 10px; border-radius: 5px; background: var(--slider-bg); border: 1px solid var(--border-color); outline: none; opacity: 0.7; -webkit-transition: .2s; transition: opacity .2s; }
 .slider:hover { opacity: 1; }
 .slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--accent-primary); cursor: pointer; }
 .slider::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--accent-primary); cursor: pointer; }
-.wire-visualization-container { background-color: var(--bg-light-primary); border-radius: 8px; padding: 10px; border: 1px solid #F1F1F1; }
-.wire-visualization { height: 40px; width: 100%; background-color: #E0E0E0; border-radius: 20px; position: relative; overflow: hidden; background-image: repeating-linear-gradient( -45deg, var(--accent-primary), var(--accent-primary) 10px, #E0E0E0 10px, #E0E0E0 20px ); background-size: 28px 28px; animation: flow-animation 5s linear infinite; animation-play-state: paused; }
+.wire-visualization-container { background-color: var(--bg-primary); border-radius: 8px; padding: 10px; border: 1px solid var(--border-color-light); }
+.wire-visualization { height: 40px; width: 100%; background-color: var(--slider-bg); border-radius: 20px; position: relative; overflow: hidden; background-image: repeating-linear-gradient( -45deg, var(--accent-primary), var(--accent-primary) 10px, var(--slider-bg) 10px, var(--slider-bg) 20px ); background-size: 28px 28px; animation: flow-animation 5s linear infinite; animation-play-state: paused; }
 @keyframes flow-animation { from { background-position-x: 0; } to { background-position-x: 28px; } }
 
 /* --- MODUL 4: Transistor --- */
 .transistor-controls { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
 .switch-toggle { position: relative; display: inline-block; width: 60px; height: 34px; }
 .switch-toggle input { opacity: 0; width: 0; height: 0; }
-.slider-toggle { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; -webkit-transition: .4s; transition: .4s; border-radius: 34px; border: 1px solid #BDBDBD; }
-.slider-toggle:before { position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 3px; background-color: white; -webkit-transition: .4s; transition: .4s; border-radius: 50%; box-shadow: 0 2px 2px rgba(0,0,0,0.1); }
+.slider-toggle { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--toggle-bg); -webkit-transition: .4s; transition: .4s; border-radius: 34px; border: 1px solid var(--toggle-border); }
+.slider-toggle:before { position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 3px; background-color: var(--toggle-handle); -webkit-transition: .4s; transition: .4s; border-radius: 50%; box-shadow: 0 2px 2px rgba(0,0,0,0.1); }
 input:checked + .slider-toggle { background-color: var(--accent-primary); border-color: var(--accent-primary-hover); }
 input:checked + .slider-toggle:before { -webkit-transform: translateX(26px); -ms-transform: translateX(26px); transform: translateX(26px); }
-.transistor-flow-visualization label { display: block; margin-top: 15px; color: var(--text-dark); font-weight: 600; }
-.flow-viz { background-image: repeating-linear-gradient( -45deg, var(--accent-primary), var(--accent-primary) 10px, #E0E0E0 10px, #E0E0E0 20px ); background-size: 28px 28px; animation: flow-animation 5s linear infinite; animation-play-state: paused; }
-#base-flow-viz { height: 15px; border-radius: 10px; animation-duration: 2s; background-color: #E0E0E0; }
-#collector-flow-viz { height: 40px; border-radius: 20px; animation-duration: 0.5s; background-color: #E0E0E0; }
-.transistor-output { text-align: center; margin-top: 25px; padding-top: 20px; border-top: 1px dashed #E0E0E0; }
+.transistor-flow-visualization label { display: block; margin-top: 15px; color: var(--text-primary); font-weight: 600; }
+.flow-viz { background-image: repeating-linear-gradient( -45deg, var(--accent-primary), var(--accent-primary) 10px, var(--slider-bg) 10px, var(--slider-bg) 20px ); background-size: 28px 28px; animation: flow-animation 5s linear infinite; animation-play-state: paused; }
+#base-flow-viz { height: 15px; border-radius: 10px; animation-duration: 2s; background-color: var(--slider-bg); }
+#collector-flow-viz { height: 40px; border-radius: 20px; animation-duration: 0.5s; background-color: var(--slider-bg); }
+.transistor-output { text-align: center; margin-top: 25px; padding-top: 20px; border-top: 1px dashed var(--border-color); }
+/* LED (sudah ok) */
 .led-off { font-size: 50px; filter: grayscale(100%) opacity(0.3); transition: all 0.3s ease; }
 .led-on { font-size: 50px; filter: grayscale(0%) opacity(1); text-shadow: 0 0 8px #FFC107, 0 0 20px #FFC107; transition: all 0.3s ease; }
 #transistor-status { color: var(--text-muted); font-weight: 600; }
 
-/* --- Style untuk Kontainer Materi (Baru) --- */
+/* --- MODUL 5: Rangkaian Paralel --- */
+.kalkulator-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.rumus-box mjx-container { margin: 10px 0; text-align: center; font-size: 1.2em !important; }
 
-.materi-container {
-    background-color: var(--bg-light-primary);
-    padding: 1px 20px 10px 20px; /* Padding atas 1px untuk trik margin */
-    border-radius: 8px;
-    margin-top: 15px;
-    border: 1px solid #F1F1F1;
-}
-
-.materi-container p {
-    color: var(--text-dark);
-    line-height: 1.7; /* Spasi antar baris lebih nyaman */
-}
-
-.materi-container ul {
-    padding-left: 20px;
-}
-.materi-container li {
-    margin-bottom: 10px;
-}
-
-.rumus-box {
-    background-color: var(--bg-light-tertiary);
-    border-left: 5px solid var(--accent-result); /* Aksen oranye */
-    padding: 15px;
-    margin: 20px 0;
-    font-size: 1.2em;
-    font-weight: 600;
-    text-align: center;
-    color: var(--accent-heading); /* Warna lavender */
-    border-radius: 0 8px 8px 0;
-}
-
-/* Judul khusus untuk simulasi, biar ada jarak */
-.simulasi-title {
-    margin-top: 30px; /* Beri jarak atas dari materi */
-}
-
-/* --- Style untuk Halaman Quiz --- */
-
-/* Kartu khusus untuk quiz di menu */
-.quiz-card {
-    border-left-color: var(--accent-result); /* Warna oranye */
-}
-.quiz-card:hover {
-    color: var(--accent-result);
-}
-.quiz-card h3 {
-    color: var(--accent-result);
-}
-
+/* --- Style Quiz --- */
+.quiz-card { border-left-color: var(--accent-result); }
+.quiz-card:hover { color: var(--accent-result); }
+.quiz-card h3 { color: var(--accent-result); }
 .question-container {
-    background-color: var(--bg-light-primary);
+    background-color: var(--bg-primary);
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 20px;
-    border: 1px solid #F1F1F1;
+    border: 1px solid var(--border-color-light);
     transition: background-color 0.3s ease;
 }
-
-.question-text {
-    font-size: 1.1em;
-    font-weight: 600;
-    color: var(--text-dark);
-}
-
-.answer-options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 15px;
-}
-
+.question-text { font-size: 1.1em; font-weight: 600; color: var(--text-primary); }
+.answer-options { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
 .option {
     display: block;
     padding: 12px;
-    background-color: var(--bg-light-secondary);
-    border: 1px solid #E0E0E0;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s ease;
-    text-align: left; /* Pastikan rata kiri */
+    text-align: left;
 }
-.option:hover {
-    background-color: var(--bg-light-tertiary);
-    border-color: var(--accent-primary);
-}
-.option input[type="radio"] {
-    margin-right: 10px;
-}
-
-/* Style untuk hasil (setelah dicek) */
-.option.correct {
-    background-color: #E8F5E9; /* Hijau muda */
-    border-color: #4CAF50; /* Hijau */
-    font-weight: 600;
-}
-.option.incorrect {
-    background-color: #FFEBEE; /* Merah muda */
-    border-color: #F44336; /* Merah */
-}
-.question-container.correct-answer {
-    background-color: #F1F8E9; /* Latar hijau super muda */
-}
-.question-container.incorrect-answer {
-    background-color: #FFEBEE; /* Latar merah super muda */
-}
-
-/* Style untuk kotak hasil */
-#quiz-result {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: var(--bg-light-tertiary);
-    border-radius: 8px;
-    text-align: center;
-}
-#quiz-result.hidden {
-    display: none;
-}
-#result-text {
-    font-size: 1.2em;
-    font-weight: 600;
-}
-
-@media (max-width: 600px) {
-    
-    .nama-class-anda {
-        display: flex;
-        flex-direction: column; 
-    }
-
-    .module-menu {
-        display: flex;
-        flex-direction: column;
-        gap: 15px; /* Sedikit mengurangi jarak di HP */
-    }
-}
+.option:hover { background-color: var(--bg-tertiary); border-color: var(--accent-primary); }
+.option input[type="radio"] { margin-right: 10px; }
+.option.correct { background-color: var(--quiz-correct-bg); border-color: var(--quiz-correct-border); font-weight: 600; }
+.option.incorrect { background-color: var(--quiz-incorrect-bg); border-color: var(--quiz-incorrect-border); }
+.question-container.correct-answer { background-color: var(--quiz-correct-module-bg); }
+.question-container.incorrect-answer { background-color: var(--quiz-incorrect-module-bg); }
+#quiz-result { margin-top: 30px; padding: 20px; background-color: var(--bg-tertiary); border-radius: 8px; text-align: center; }
+#quiz-result.hidden { display: none; }
+#result-text { font-size: 1.2em; font-weight: 600; }

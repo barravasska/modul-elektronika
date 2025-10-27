@@ -6,12 +6,25 @@
     <title>Modul 1: Hukum Ohm</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="images/cubes.png" type="image/x-icon">
+    <script>
+        (function() {
+            // Cek LocalStorage secara instan
+            const theme = localStorage.getItem('theme');
+            if (theme === 'dark') {
+                // Terapkan tema gelap ke <html> tag SEBELUM halaman di-render
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }   
+        })();
+    </script>
 </head>
 <body>
 
     <header class="container">
         <a href="index.html" class="back-button">← Kembali ke Menu</a>
         <h1>Modul 1: Hukum Ohm</h1>
+        <button id="theme-toggle-btn">🌙</button>
     </header>
 
     <main id="app-container" class="container">
@@ -58,6 +71,7 @@
     </main>
 
     <script src="script/script-modul-1.js"></script>
+    <script src="script/theme-switcher.js"></script>
 
 </body>
 </html>
