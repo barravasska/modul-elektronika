@@ -418,6 +418,11 @@ input:checked + .slider-toggle:before { -webkit-transform: translateX(26px); -ms
     border: 1px solid var(--border-color-light);
     transition: background-color 0.3s ease;
 }
+
+.video-card { border-left-color: rgb(76, 218, 111) }
+.video-card:hover { color: rgb(76, 218, 111) }
+.video-card h3 { color: rgb(76, 218, 111) }
+
 .question-text { font-size: 1.1em; font-weight: 600; color: var(--text-primary); }
 .answer-options { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
 .option {
@@ -520,4 +525,29 @@ input:checked + .slider-toggle:before { -webkit-transform: translateX(26px); -ms
         flex-direction: column; /* Susun ke bawah */
         align-items: flex-start; /* Rata kiri */
     }
+}
+
+/* --- Style Footer --- */
+footer {
+    width: 100%;
+    /* Kita pakai padding yang sama dengan body */
+    padding: 0 10px 20px 10px;
+    margin-top: 30px;
+    box-sizing: border-box; /* Pastikan padding tidak merusak layout */
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto; /* Pusatkan */
+    padding: 20px 15px;
+    background-color: var(--bg-secondary); /* Sama dengan container */
+    border-radius: 12px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.footer-content p {
+    margin: 0;
 }
