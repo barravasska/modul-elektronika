@@ -551,3 +551,24 @@ footer {
 .footer-content p {
     margin: 0;
 }
+
+/* --- Style untuk Kartu Software dengan Ikon --- */
+.software-card h3 {
+    display: flex; /* Gunakan flexbox untuk mensejajarkan ikon dan teks */
+    align-items: center; /* Pusatkan ikon secara vertikal */
+    gap: 10px; /* Jarak antara ikon dan teks */
+    margin-bottom: 10px; /* Ruang di bawah judul/ikon */
+}
+
+.software-icon {
+    width: 40px;  /* Ukuran ikon */
+    height: 40px; /* Ukuran ikon */
+    object-fit: contain; /* Pastikan gambar tidak terdistorsi */
+    flex-shrink: 0; /* Jangan biarkan ikon mengecil */
+}
+
+/* Penyesuaian untuk kartu agar ikon tidak terlalu besar */
+.software-card {
+    padding-top: 15px; /* Sedikit ruang di atas ikon */
+    padding-bottom: 15px; /* Sedikit ruang di bawah */
+}
