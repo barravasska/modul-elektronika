@@ -572,3 +572,144 @@ footer {
     padding-top: 15px; /* Sedikit ruang di atas ikon */
     padding-bottom: 15px; /* Sedikit ruang di bawah */
 }
+
+.ai-fab {
+    position: fixed; /* Mengambang di layar */
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--accent-heading); /* Warna oranye/ungu tema */
+    color: white;
+    font-size: 2em;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    z-index: 998; /* Di bawah jendela chat */
+    transition: transform 0.2s ease;
+}
+.ai-fab:hover {
+    transform: scale(1.1);
+}
+
+.ai-chat-window {
+    position: fixed;
+    bottom: 100px;
+    right: 25px;
+    width: 350px;
+    height: 500px;
+    background-color: var(--bg-secondary);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px var(--shadow-color);
+    display: flex;
+    flex-direction: column;
+    z-index: 999; /* Tampil paling atas */
+    transition: all 0.3s ease;
+}
+
+/* Sembunyikan/Tampilkan Jendela Chat */
+.ai-chat-window.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+
+.ai-chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: var(--bg-tertiary);
+    border-radius: 16px 16px 0 0;
+}
+.ai-chat-header h3 {
+    margin: 0;
+    padding: 0;
+    border: none;
+    color: var(--text-heading);
+}
+#ai-close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0;
+    text-transform: none; /* Batalkan uppercase dari style global */
+}
+
+.ai-chat-body {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto; /* Bisa di-scroll */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.chat-message {
+    padding: 10px 15px;
+    border-radius: 12px;
+    max-width: 80%;
+    line-height: 1.4;
+}
+.user-message {
+    background-color: var(--accent-primary);
+    color: white;
+    align-self: flex-end; /* Pesan pengguna di kanan */
+    border-radius: 12px 12px 0 12px;
+}
+.ai-message {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    align-self: flex-start; /* Pesan AI di kiri */
+    border-radius: 12px 12px 12px 0;
+}
+.ai-message.typing {
+    font-style: italic;
+    color: var(--text-muted);
+}
+
+.ai-chat-footer {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid var(--border-color-light);
+}
+#ai-input {
+    flex-grow: 1;
+    border: none;
+    background-color: var(--bg-primary); /* Sesuai tema */
+    color: var(--text-primary);
+    padding: 12px;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+#ai-send-btn {
+    background-color: var(--accent-primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0 15px;
+    cursor: pointer;
+    font-size: 1.2em;
+    text-transform: none; /* Batalkan uppercase */
+}
+
+/* Penyesuaian untuk HP */
+@media (max-width: 600px) {
+    .ai-chat-window {
+        /* Penuhi layar */
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border-radius: 0;
+    }
+    .ai-fab {
+        bottom: 15px;
+        right: 15px;
+    }
+}
