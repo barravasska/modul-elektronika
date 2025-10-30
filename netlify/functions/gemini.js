@@ -40,12 +40,12 @@ exports.handler = async function(event, context) {
         return { statusCode: 400, body: JSON.stringify({ error: 'userInput is required' }) };
     }
 
-    const systemInstruction = "Kamu adalah 'Elsi', asisten AI yang ramah dan membantu di web e-learning elektronika dasar. Jawablah pertanyaan pengguna seputar elektronika dasar (resistor, transistor, hukum ohm, arus, dll). Jika pertanyaan di luar topik, tolak dengan sopan.";
+    const systemInstruction = "Kamu adalah 'Aaron', asisten AI yang ramah dan membantu di web e-learning elektronika dasar. Jawablah pertanyaan pengguna seputar elektronika dasar (resistor, transistor, hukum ohm, arus, dll). Jika pertanyaan di luar topik, tolak dengan sopan.";
 
     const requestBody = {
         "contents": [
             { "role": "user", "parts": [{ "text": systemInstruction }] },
-            { "role": "model", "parts": [{ "text": "Baik! Saya Elsi. Siap membantu menjelaskan konsep elektronika dasar." }] },
+            { "role": "model", "parts": [{ "text": "Baik! Saya Aaron. Siap membantu menjelaskan konsep elektronika dasar." }] },
             { "role": "user", "parts": [{ "text": userInput }] }
         ]
     };
