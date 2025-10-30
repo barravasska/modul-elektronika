@@ -1,5 +1,5 @@
 // File: /netlify/functions/gemini.js
-// VERSI PERBAIKAN MODEL
+// VERSI PERBAIKAN API ENDPOINT (v1)
 
 exports.handler = async function(event, context) {
     console.log('Netlify function "gemini.js" dipanggil.');
@@ -17,12 +17,14 @@ exports.handler = async function(event, context) {
             body: JSON.stringify({ error: 'Server configuration error. API Key not found.' })
         };
     }
+    console.log('API Key berhasil dimuat.');
+
 
     // ===============================================
-    //           PERUBAHAN ADA DI BARIS INI (FIX)
+    //           PERBAIKAN ADA DI BARIS INI (FIX)
     // ===============================================
-    // Kita ganti 'gemini-pro' dengan model terbaru 'gemini-1.5-flash-latest'
-    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
+    // Kita ganti 'v1beta' dengan 'v1' (versi stabil)
+    const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
     // ===============================================
 
     let userInput;
@@ -48,7 +50,7 @@ exports.handler = async function(event, context) {
         ]
     };
 
-    console.log('Mengirim request ke Gemini (model: 1.5-flash)...');
+    console.log('Mengirim request ke Gemini (model: 1.5-flash, endpoint: v1)...');
     try {
         const geminiResponse = await fetch(API_URL, {
             method: 'POST',
@@ -63,6 +65,13 @@ exports.handler = async function(event, context) {
         }
 
         const data = await geminiResponse.json();
+        
+        // Cek jika 'candidates' ada
+        if (!data.candidates || !data.candidates[0]) {
+            console.error('Respon tidak valid dari Gemini:', data);
+            throw new Error('Invalid response structure from Gemini.');
+        }
+
         const aiText = data.candidates[0].content.parts[0].text;
         
         console.log('Berhasil mendapat balasan dari Gemini.');
