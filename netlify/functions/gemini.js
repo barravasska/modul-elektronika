@@ -19,13 +19,7 @@ exports.handler = async function(event, context) {
     }
     console.log('API Key berhasil dimuat.');
 
-
-    // ===============================================
-    //           PERBAIKAN ADA DI BARIS INI (FIX)
-    // ===============================================
-    // Kita ganti 'v1beta' dengan 'v1' (versi stabil)
-    const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
-    // ===============================================
+    const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-1.0-pro:generateContent?key=${API_KEY}`;
 
     let userInput;
     try {
