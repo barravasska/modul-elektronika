@@ -573,6 +573,8 @@ footer {
     padding-bottom: 15px; /* Sedikit ruang di bawah */
 }
 
+/* --- Style untuk AI Assistant (Versi Perbaikan) --- */
+
 .ai-fab {
     position: fixed; /* Mengambang di layar */
     bottom: 25px;
@@ -648,28 +650,49 @@ footer {
     gap: 12px;
 }
 
+/* ============================================= */
+/* INI BAGIAN PERBAIKANNYA           */
+/* ============================================= */
+
 .chat-message {
     padding: 10px 15px;
     border-radius: 12px;
     max-width: 80%;
     line-height: 1.4;
+    /* Cegah teks (seperti "Apa kabar") tampil tanpa bubble */
+    /* Kita pindahkan style <p> langsung ke .chat-message */
+    margin: 0; 
 }
-.user-message {
+.chat-message p {
+    margin: 0; /* Hapus margin default paragraf */
+}
+
+/* Target '.user' (dari script: addMessageToChat(..., 'user')) */
+.chat-message.user {
     background-color: var(--accent-primary);
     color: white;
     align-self: flex-end; /* Pesan pengguna di kanan */
     border-radius: 12px 12px 0 12px;
 }
-.ai-message {
+
+/* Target '.ai' (dari script: addMessageToChat(..., 'ai')) */
+.chat-message.ai {
     background-color: var(--bg-tertiary);
     color: var(--text-primary);
     align-self: flex-start; /* Pesan AI di kiri */
     border-radius: 12px 12px 12px 0;
 }
-.ai-message.typing {
+
+/* Target '.typing' (dari script: addMessageToChat(..., 'ai-message typing')) */
+/* Kita buat selectornya lebih spesifik */
+.chat-message.ai-message.typing {
+    background-color: transparent;
     font-style: italic;
     color: var(--text-muted);
 }
+/* ============================================= */
+/* AKHIR BAGIAN PERBAIKAN            */
+/* ============================================= */
 
 .ai-chat-footer {
     display: flex;
@@ -678,23 +701,40 @@ footer {
 }
 #ai-input {
     flex-grow: 1;
-    border: none;
-    background-color: var(--bg-primary); /* Sesuai tema */
+    border: 1px solid var(--border-color); /* Beri border tipis */
+    background-color: var(--input-bg);
     color: var(--text-primary);
     padding: 12px;
     border-radius: 8px;
     margin-right: 10px;
 }
+#ai-input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+}
+
 #ai-send-btn {
     background-color: var(--accent-primary);
     color: white;
     border: none;
     border-radius: 8px;
-    padding: 0 15px;
+    width: 45px; /* Buat jadi kotak */
+    height: 45px;
+    padding: 0;
     cursor: pointer;
-    font-size: 1.2em;
-    text-transform: none; /* Batalkan uppercase */
+    font-size: 1.5em; /* Perbesar ikon panah */
+    text-transform: none;
+    flex-shrink: 0; /* Jangan biarkan tombolnya gepeng */
+    
+    /* Pusatkan ikon panah */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+#ai-send-btn:hover {
+    background-color: var(--accent-primary-hover);
+}
+
 
 /* Penyesuaian untuk HP */
 @media (max-width: 600px) {
