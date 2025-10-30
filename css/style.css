@@ -6,25 +6,33 @@
 /* ================================================= */
 
 /* --- TEMA 1: LIGHT MODE (DEFAULT) --- */
+/* --- TEMA 1: LIGHT MODE (DEFAULT) - VERSI REVISI --- */
+/* --- TEMA 1: LIGHT MODE (DEFAULT) - VERSI GRADIENT KACA --- */
 :root {
-    --bg-primary: #FDFBFA;
-    --bg-secondary: #FFFFFF;
-    --bg-tertiary: #FFF8F9;
-    --text-primary: #4B4B4B;
-    --text-muted: #9E9E9E;
+    /* Gradien background untuk body */
+    --bg-primary: linear-gradient(to bottom right, #fdeaff, #fbefff);
+    
+    /* Warna semi-transparan untuk "frosted glass" */
+    --bg-secondary: rgba(255, 255, 255, 0.7); /* Kontainer utama */
+    --bg-tertiary: rgba(255, 255, 255, 0.5);  /* Kartu modul */
+    
+    --text-primary: #1F2937;
+    --text-muted: #6B7280;
     --text-heading: #BA68C8;
     --accent-primary: #E57373;
     --accent-primary-hover: #D96565;
     --accent-result: #FFB74D;
     
-    --border-color: #E0E0E0;
-    --border-color-light: #F1F1F1;
-    --input-bg: var(--bg-secondary);
-    --slider-bg: #EEE;
+    /* Border halus untuk efek kaca */
+    --border-color: rgba(255, 255, 255, 0.4);
+    --border-color-light: rgba(255, 255, 255, 0.6);
+    
+    --input-bg: rgba(255, 255, 255, 0.8);
+    --slider-bg: rgba(255, 255, 255, 0.5);
     --toggle-bg: #ccc;
     --toggle-border: #BDBDBD;
     --toggle-handle: white;
-    --shadow-color: rgba(0, 0, 0, 0.05);
+    --shadow-color: rgba(0, 0, 0, 0.07); /* Shadow lebih halus */
     
     --resistor-body: #f5deb3;
     --resistor-border: #d2b48c;
@@ -34,15 +42,19 @@
     --quiz-correct-border: #4CAF50;
     --quiz-incorrect-bg: #FFEBEE;
     --quiz-incorrect-border: #F44336;
-    --quiz-correct-module-bg: #F1F8E9;
-    --quiz-incorrect-module-bg: #FFEBEE;
+    --quiz-correct-module-bg: rgba(241, 248, 233, 0.8);
+    --quiz-incorrect-module-bg: rgba(255, 235, 238, 0.8);
 }
 
 /* --- TEMA 2: NIGHT MODE (OVERRIDE) --- */
+/* --- TEMA 2: NIGHT MODE (OVERRIDE) - VERSI KACA --- */
 [data-theme="dark"] {
     --bg-primary: #1e2a38;
-    --bg-secondary: #2c3e50;
-    --bg-tertiary: #34495e;
+    
+    /* Ganti ke RGBA untuk transparansi */
+    --bg-secondary: rgba(44, 62, 80, 0.7);
+    --bg-tertiary: rgba(52, 73, 94, 0.8);
+    
     --text-primary: #ecf0f1;
     --text-muted: #bdc3c7;
     --text-heading: #f39c12;
@@ -50,23 +62,23 @@
     --accent-primary-hover: #2980b9;
     --accent-result: #f1c40f;
     
-    --border-color: var(--bg-tertiary);
-    --border-color-light: var(--bg-secondary);
-    --input-bg: var(--bg-secondary);
+    /* Ganti ke RGBA */
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-color-light: rgba(255, 255, 255, 0.2);
+    --input-bg: rgba(44, 62, 80, 0.9);
+    
     --slider-bg: var(--bg-primary);
     --toggle-bg: var(--bg-tertiary);
     --toggle-border: var(--bg-primary);
     --toggle-handle: white;
     --shadow-color: rgba(0, 0, 0, 0.3);
 
-    /* Resistor body tetap sama */
-    
     --quiz-correct-bg: #2E4E30;
     --quiz-correct-border: #4CAF50;
     --quiz-incorrect-bg: #5A2D30;
     --quiz-incorrect-border: #F44336;
-    --quiz-correct-module-bg: #293a2a;
-    --quiz-incorrect-module-bg: #3e2224;
+    --quiz-correct-module-bg: rgba(41, 58, 42, 0.8);
+    --quiz-incorrect-module-bg: rgba(62, 34, 36, 0.8);
 }
 
 /* ================================================= */
@@ -261,6 +273,7 @@ h4 {
 
 /* --- Style Halaman Menu (index.html) --- */
 /* --- Style Halaman Menu (index.html) (VERSI MODIFIKASI) --- */
+/* --- Style Halaman Menu (index.html) (VERSI MODIFIKASI ANIMASI) --- */
 .module-menu {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -268,57 +281,63 @@ h4 {
 }
 
 .module-card {
-    background-color: var(--bg-secondary); /* Ubah ke bg-secondary (lebih bersih) */
-    border: 1px solid var(--border-color-light); /* Tambah border halus */
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color-light);
     border-radius: 12px;
     padding: 20px;
     text-decoration: none;
     color: var(--text-primary);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+    /* Ganti 'ease' ke 'cubic-bezier' untuk animasi yg lebih "hidup" */
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                background-color 0.3s ease;
     border-left: 5px solid var(--accent-primary);
     text-align: left;
-    position: relative; /* Diperlukan untuk ikon panah */
+    position: relative;
+    overflow: hidden; /* Penting untuk efek slide-in panah */
 }
 
-/* Ikon panah (->) baru yang muncul saat hover */
+/* Ikon panah (->) baru */
 .module-card::after {
     content: '→';
     position: absolute;
-    right: 25px;
+    right: 30px; /* Mulai lebih jauh di kanan */
     top: 50%;
     transform: translateY(-50%);
     font-size: 1.5em;
     font-weight: 600;
     color: var(--text-muted);
-    opacity: 0;
-    transition: all 0.2s ease;
+    opacity: 0; /* Mulai dari tak terlihat */
+    /* Animasi panah juga pakai cubic-bezier */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .module-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px var(--shadow-color);
-    background-color: var(--bg-tertiary); /* Efek hover ganti background */
+    /* Tambahkan 'scale(1.03)' untuk efek "pop" */
+    transform: translateY(-5px) scale(1.03); 
+    box-shadow: 0 15px 30px var(--shadow-color); /* Shadow lebih besar */
+    background-color: var(--bg-tertiary);
 }
 
-/* Panah akan muncul dan berwarna saat hover */
+/* Panah akan slide-in (mundur) ke posisi akhir */
 .module-card:hover::after {
     opacity: 1;
-    right: 20px;
+    right: 20px; /* Posisi akhir panah */
 }
 
 .module-card h3 {
     margin-top: 0;
-    color: var(--accent-primary); /* Selaraskan warna h3 dengan border-left */
+    color: var(--accent-primary);
     transition: color 0.2s ease;
 }
 
 .module-card:hover h3 {
-    color: var(--accent-primary-hover); /* Judul sedikit berubah saat hover */
+    color: var(--accent-primary-hover);
 }
 
 .module-card p {
     color: var(--text-muted);
-    padding-right: 25px; /* Beri ruang agar teks tidak tertabrak panah */
+    padding-right: 25px; 
 }
 
 .module-card.disabled {
@@ -332,13 +351,14 @@ h4 {
     color: var(--text-muted);
 }
 .module-card.disabled:hover::after {
-    opacity: 0; /* Panah tidak muncul di kartu disabled */
+    opacity: 0;
 }
 
 /* --- Penyesuaian Kartu Khusus --- */
+/* (Kode .quiz-card dan .video-card Anda tetap sama) */
 .quiz-card { border-left-color: var(--accent-result); }
 .quiz-card h3 { color: var(--accent-result); }
-.quiz-card:hover h3 { color: var(--accent-result); } /* Bisa disamakan */
+.quiz-card:hover h3 { color: var(--accent-result); }
 .quiz-card:hover::after { color: var(--accent-result); }
 
 .video-card { border-left-color: rgb(76, 218, 111); }
