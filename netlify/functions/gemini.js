@@ -19,8 +19,7 @@ exports.handler = async function(event, context) {
     }
     console.log('API Key berhasil dimuat.');
 
-    const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-1.0-pro:generateContent?key=${API_KEY}`;
-
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`;
     let userInput;
     try {
         const body = JSON.parse(event.body);
