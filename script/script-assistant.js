@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
             // 4b. Hapus "sedang mengetik" & tampilkan error
             chatBody.removeChild(typingIndicator);
-            addMessageToChat('Maaf, terjadi kesalahan. Server backend saya mungkin sedang tidur atau error. Coba lagi nanti.', 'ai');
+            addMessageToChat('Maaf, sementara fitur ini sedang dalam maintenance.', 'ai');
             console.error('Error fetching from Netlify function:', error);
         }
     }
