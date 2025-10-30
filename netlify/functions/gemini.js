@@ -24,7 +24,7 @@ exports.handler = async function(event, context) {
     // ===============================================
     // Kita gunakan model terbaru: 'gemini-1.5-pro-latest'
     // Kita tetap pakai endpoint 'v1beta'
-    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=${API_KEY}`;
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${API_KEY}`;
     // ===============================================
 
     let userInput;
