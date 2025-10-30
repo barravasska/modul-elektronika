@@ -1,5 +1,5 @@
 // File: /netlify/functions/gemini.js
-// VERSI PERBAIKAN API ENDPOINT (v1)
+// VERSI FINAL: Menggunakan 'gemini-1.5-pro-latest'
 
 exports.handler = async function(event, context) {
     console.log('Netlify function "gemini.js" dipanggil.');
@@ -19,7 +19,14 @@ exports.handler = async function(event, context) {
     }
     console.log('API Key berhasil dimuat.');
 
-    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`;
+    // ===============================================
+    //           PERBAIKAN ADA DI BARIS INI (FIX)
+    // ===============================================
+    // Kita gunakan model terbaru: 'gemini-1.5-pro-latest'
+    // Kita tetap pakai endpoint 'v1beta'
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=${API_KEY}`;
+    // ===============================================
+
     let userInput;
     try {
         const body = JSON.parse(event.body);
@@ -43,7 +50,7 @@ exports.handler = async function(event, context) {
         ]
     };
 
-    console.log('Mengirim request ke Gemini (model: 1.5-flash, endpoint: v1)...');
+    console.log('Mengirim request ke Gemini (model: 1.5-pro-latest)...');
     try {
         const geminiResponse = await fetch(API_URL, {
             method: 'POST',
@@ -59,7 +66,6 @@ exports.handler = async function(event, context) {
 
         const data = await geminiResponse.json();
         
-        // Cek jika 'candidates' ada
         if (!data.candidates || !data.candidates[0]) {
             console.error('Respon tidak valid dari Gemini:', data);
             throw new Error('Invalid response structure from Gemini.');
