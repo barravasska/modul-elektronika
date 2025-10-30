@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         aiInput.value = '';
 
         // 2. Tampilkan indikator "sedang mengetik"
-        const typingIndicator = addMessageToChat('Elsi sedang mengetik...', 'ai-message typing');
+        const typingIndicator = addMessageToChat('Aaron sedang mengetik...', 'ai-message typing');
 
         try {
             // 3. Panggil API (lewat backend Netlify)
