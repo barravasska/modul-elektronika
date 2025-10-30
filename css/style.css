@@ -260,13 +260,16 @@ h4 {
 }
 
 /* --- Style Halaman Menu (index.html) --- */
+/* --- Style Halaman Menu (index.html) (VERSI MODIFIKASI) --- */
 .module-menu {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
 }
+
 .module-card {
-    background-color: var(--bg-tertiary);
+    background-color: var(--bg-secondary); /* Ubah ke bg-secondary (lebih bersih) */
+    border: 1px solid var(--border-color-light); /* Tambah border halus */
     border-radius: 12px;
     padding: 20px;
     text-decoration: none;
@@ -274,19 +277,50 @@ h4 {
     transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
     border-left: 5px solid var(--accent-primary);
     text-align: left;
+    position: relative; /* Diperlukan untuk ikon panah */
 }
+
+/* Ikon panah (->) baru yang muncul saat hover */
+.module-card::after {
+    content: '→';
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--text-muted);
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+
 .module-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px var(--shadow-color);
-    color: var(--text-heading);
+    background-color: var(--bg-tertiary); /* Efek hover ganti background */
 }
+
+/* Panah akan muncul dan berwarna saat hover */
+.module-card:hover::after {
+    opacity: 1;
+    right: 20px;
+}
+
 .module-card h3 {
     margin-top: 0;
-    color: var(--text-heading);
+    color: var(--accent-primary); /* Selaraskan warna h3 dengan border-left */
+    transition: color 0.2s ease;
 }
+
+.module-card:hover h3 {
+    color: var(--accent-primary-hover); /* Judul sedikit berubah saat hover */
+}
+
 .module-card p {
     color: var(--text-muted);
+    padding-right: 25px; /* Beri ruang agar teks tidak tertabrak panah */
 }
+
 .module-card.disabled {
     background-color: var(--bg-primary);
     border-left-color: var(--border-color);
@@ -297,6 +331,20 @@ h4 {
 .module-card.disabled h3 {
     color: var(--text-muted);
 }
+.module-card.disabled:hover::after {
+    opacity: 0; /* Panah tidak muncul di kartu disabled */
+}
+
+/* --- Penyesuaian Kartu Khusus --- */
+.quiz-card { border-left-color: var(--accent-result); }
+.quiz-card h3 { color: var(--accent-result); }
+.quiz-card:hover h3 { color: var(--accent-result); } /* Bisa disamakan */
+.quiz-card:hover::after { color: var(--accent-result); }
+
+.video-card { border-left-color: rgb(76, 218, 111); }
+.video-card h3 { color: rgb(76, 218, 111); }
+.video-card:hover h3 { color: rgb(76, 218, 111); }
+.video-card:hover::after { color: rgb(76, 218, 111); }
 
 /* --- Tombol Kembali (di Halaman Modul) --- */
 .back-button {
